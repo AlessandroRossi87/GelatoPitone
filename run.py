@@ -62,32 +62,40 @@ def read_data():
     """
     choose_data = input("Enter K for Stock, S for Sold, P for Price or R for Revenue\n")
     if choose_data == "K":
-        stock = list(ws.rows)
+        worksheet = SHEET.worksheet("stock")
 
         print("The latest Stock data is:")
-        for row in stock[:1]:
-            print(row)
+        stock_data = worksheet.get_all_values()
+        stock_data = stock_data[-1]
+        for stock_row in stock_data:
+            print(stock_row)
 
     elif choose_data == "S": 
-        sold = list(ws.rows)
+        worksheet = SHEET.worksheet("sold")
 
         print("The latest Sold data is:")
-        for row in sold[:1]:
-            print(row)
+        sold_data = worksheet.get_all_values()
+        sold_data = sold_data[-1]
+        for sold_row in sold_data:
+            print(sold_row)
 
     elif choose_data == "P":
-        price = list(ws.rows)
+        worksheet = SHEET.worksheet("price")
 
-        print("The latest Price data is:")
-        for row in price[:1]:
-            print(row)
+        print("The latest Price is:")
+        price_data = worksheet.get_all_values()
+        price_data = price_data[-1]
+        for price_row in price_data:
+            print(price_row)
 
     elif choose_data == "R":
-        revenue = list(ws.rows)
+        worksheet = SHEET.worksheet("revenue")
 
-        print("The latest Revenue data is:")
-        for row in revenue[:1]:
-            print(row)
+        print("The latest Revenue is:")
+        revenue_data = worksheet.get_all_values()
+        revenue_data = revenue_data[-1]
+        for revenue_row in revenue_data:
+            print(revenue_row)
 
 
 def insert_data(data, worksheet): # From Love Sandwiches walkthrough project
@@ -117,8 +125,9 @@ def main():
     Run all program functions
     """
     read_or_insert_data()
-    data = insert_data(data, worksheet)
-    sold_data = [int(num) for num in "sold"]
+    data = read_data()
+#    sold_data = [int(num) for num in "sold"]
+    stock_data = [num for num in "stock"]
 
 print("Welcome to Gelato Pitone")
 main()
