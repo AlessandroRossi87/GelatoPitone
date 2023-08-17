@@ -60,7 +60,35 @@ def read_data():
     """
     Asks for which data to be read and returns it
     """
-    print("Enter K for Stock, S for Sold, P for Price or R for Revenue\n")
+    choose_data = input("Enter K for Stock, S for Sold, P for Price or R for Revenue\n")
+    if choose_data == "K":
+        stock = list(ws.rows)
+
+        print("The latest Stock data is:")
+        for row in stock[:1]:
+            print(row)
+
+    elif choose_data == "S": 
+        sold = list(ws.rows)
+
+        print("The latest Sold data is:")
+        for row in sold[:1]:
+            print(row)
+
+    elif choose_data == "P":
+        price = list(ws.rows)
+
+        print("The latest Price data is:")
+        for row in price[:1]:
+            print(row)
+
+    elif choose_data == "R":
+        revenue = list(ws.rows)
+
+        print("The latest Revenue data is:")
+        for row in revenue[:1]:
+            print(row)
+
 
 def insert_data(data, worksheet): # From Love Sandwiches walkthrough project
     """
@@ -89,8 +117,8 @@ def main():
     Run all program functions
     """
     read_or_insert_data()
-    data = insert_data()
-    sold_data = [int(num) for num in sold]
+    data = insert_data(data, worksheet)
+    sold_data = [int(num) for num in "sold"]
 
 print("Welcome to Gelato Pitone")
 main()
