@@ -20,7 +20,7 @@ revenue = SHEET.worksheet("revenue")
 data = stock.get_all_values()
 
 
-def read_or_insert_data():
+def read_or_insert_data(): # I wrote this
     """
     Asks user if they wish to read or insert data.
     They can insert sold data or read any data.
@@ -35,8 +35,7 @@ def read_or_insert_data():
         sold_data = insert_data.split(",")
         if validate_data(sold_data):
             print("Data is valid!")
-
-        return sold_data
+        insert_data
 
 
 def validate_data(values):     # From Love Sandwiches walkthrough project
@@ -56,11 +55,21 @@ def validate_data(values):     # From Love Sandwiches walkthrough project
     return True
 
 
-def read_data():
+def insert_data(data, worksheet):   # From Love Sandwiches walkthrough project
+    """
+    Allows user to insert Sold data to calculate stock
+    """
+    print("Updating Sold worksheet...\n")
+    insert_data = SHEET.worksheet("sold")
+    insert_data.append_row(data)
+    print("Sold data updated successfully!")
+
+
+def read_data(): # I wrote this looking at https://docs.gspread.org/
     """
     Asks for which data to be read and returns it
     """
-    choose_data = input("Enter K for Stock, S for Sold, P for Price or R for Revenue\n")
+    choose_data = input("Choose K (Stock) S (Sold) P (Price) or R (Revenue)\n")
     if choose_data == "K":
         worksheet = SHEET.worksheet("stock")
 
@@ -70,7 +79,7 @@ def read_data():
         for stock_row in stock_data:
             print(stock_row)
 
-    elif choose_data == "S": 
+    elif choose_data == "S":
         worksheet = SHEET.worksheet("sold")
 
         print("The latest Sold data is:")
@@ -98,15 +107,6 @@ def read_data():
             print(revenue_row)
 
 
-def insert_data(data, worksheet): # From Love Sandwiches walkthrough project
-    """
-    Allows user to insert Sold data to calculate stock
-    """
-    print("Updating Sold worksheet...\n")
-    insert_data = SHEET.worksheet(sold)
-    insert_data.append_row(data)
-    print("Sold data updated successfully!")
-
 # def calculate_stock_data()
     """
     Calculates stock data from inserted sold data
@@ -128,6 +128,7 @@ def main():
     data = read_data()
 #    sold_data = [int(num) for num in "sold"]
     stock_data = [num for num in "stock"]
+
 
 print("Welcome to Gelato Pitone")
 main()
