@@ -37,7 +37,6 @@ def read_or_insert_data():
             print("Data is valid!")
 
         return sold_data
-#    else print("Invalid data")
 
 
 def validate_data(values):     # From Love Sandwiches walkthrough project
@@ -57,27 +56,20 @@ def validate_data(values):     # From Love Sandwiches walkthrough project
     return True
 
 
-def update_sold(data, worksheet): # From Love Sandwiches walkthrough project
-    """
-    Receives a list of integers to be inserted into worksheet
-    """
-    print("Updating Sold worksheet...\n")
-    update_worksheet = SHEET.worksheet(sold)
-    update_worksheet.append_row(data)
-    print("Sold data updated successfully!")
-
-
 def read_data():
     """
     Asks for which data to be read and returns it
     """
     print("Enter K for Stock, S for Sold, P for Price or R for Revenue\n")
 
-def insert_data():
+def insert_data(data, worksheet): # From Love Sandwiches walkthrough project
     """
     Allows user to insert Sold data to calculate stock
     """
-    print(d)
+    print("Updating Sold worksheet...\n")
+    insert_data = SHEET.worksheet(sold)
+    insert_data.append_row(data)
+    print("Sold data updated successfully!")
 
 # def calculate_stock_data()
     """
@@ -98,7 +90,7 @@ def main():
     """
     read_or_insert_data()
     data = insert_data()
-    sold_data = [int(num) for num in data]
+    sold_data = [int(num) for num in sold]
 
 print("Welcome to Gelato Pitone")
 main()
