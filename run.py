@@ -13,7 +13,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("icecream_sheet")
 
 stock = SHEET.worksheet("stock")
-sold = SHEET.worksheet("stold")
+sold = SHEET.worksheet("sold")
 price = SHEET.worksheet("price")
 revenue = SHEET.worksheet("revenue")
 
@@ -26,13 +26,46 @@ def read_or_insert_data():
     They can insert sold data or read any data.
     """
     print("Do you wish to read or inser data?")
-    read_or_insert = input("Enter R for Read or I for insert:\n")
+    read_or_insert = input("Enter R for Read or I for Insert:\n")
     if read_or_insert == "R":
         read_data
     elif read_or_insert == "I":
-        print("Insert Sold data")
-        insert_data
-    else print("Invaid data")
+        insert_data = input("Insert Sold data:\n")
+
+        sold_data = insert_data.split(",")
+        if validate_data(sold_data):
+            print("Data is valid!")
+
+        return sold_data
+#    else print("Invalid data")
+
+
+def validate_data(values):     # From Love Sandwiches walkthrough project
+    """
+    Validates the date insert
+    """
+    try:
+        [int(value) for value in values]
+        if len(values) != 5:
+            raise ValueError(
+                f"You provided {len(values)} instead of 5 values required"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, try again.\n")
+        return False
+
+    return True
+
+
+def update_sold(data, worksheet): # From Love Sandwiches walkthrough project
+    """
+    Receives a list of integers to be inserted into worksheet
+    """
+    print("Updating Sold worksheet...\n")
+    update_worksheet = SHEET.worksheet(sold)
+    update_worksheet.append_row(data)
+    print("Sold data updated successfully!")
+
 
 def read_data():
     """
@@ -40,25 +73,32 @@ def read_data():
     """
     print("Enter K for Stock, S for Sold, P for Price or R for Revenue\n")
 
-def insert_data()
+def insert_data():
     """
     Allows user to insert Sold data to calculate stock
     """
+    print(d)
 
-def calculate_stock_data()
+# def calculate_stock_data()
     """
     Calculates stock data from inserted sold data
     """
-    returns = new_stock
+#   returns = new_stock
 
-def calculate_revenue()
+# def calculate_revenue()
     """
     Calculate today's revenue from sold data
     """
-    returns = new_revenue
+#     returns = new_revenue
 
 
-def main()
+def main():
     """
     Run all program functions
     """
+    read_or_insert_data()
+    data = insert_data()
+    sold_data = [int(num) for num in data]
+
+print("Welcome to Gelato Pitone")
+main()
