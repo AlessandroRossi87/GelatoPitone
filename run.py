@@ -12,12 +12,13 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("icecream_sheet")
 
-stock = SHEET.worksheet("stock")
-sold = SHEET.worksheet("sold")
-price = SHEET.worksheet("price")
-revenue = SHEET.worksheet("revenue")
+taste = SHEET.worksheet("taste").col_values(0)
+ingredients = SHEET.worksheet("ingredients").col_values(1)
+vegan = SHEET.worksheet("vegan").col_values(2)
+price = SHEET.worksheet("price").col_values(3)
+retail_price = SHEET.worksheet("retail_price").col_values(4)
 
-data = stock.get_all_values()
+data = sheet.get_all_values()
 
 
 def read_or_insert_data(): # I wrote this
@@ -65,7 +66,18 @@ def insert_data(data, worksheet):   # From Love Sandwiches walkthrough project
     print("Sold data updated successfully!")
 
 
-def read_data(): # I wrote this looking at https://docs.gspread.org/
+def read_data(self):
+    """"
+    Creating new fuction to read model data
+    """
+    print(f"taste = {self.taste}\n")
+    print(f"ingredients = {self.ingredients}\n")
+    print(f"vegan = {self.vegan}\n")
+    print(f"price = {self.price}\n")
+    print(f"retail-price = {self.retail-price}\n")
+
+
+# def read_data(): # I wrote this looking at https://docs.gspread.org/
     """
     Asks for which data to be read and returns it
     """
@@ -79,7 +91,7 @@ def read_data(): # I wrote this looking at https://docs.gspread.org/
         for stock_row in stock_data:
             print(stock_row)
 
-    elif choose_data == "S":
+    # elif choose_data == "S":
         worksheet = SHEET.worksheet("sold")
 
         print("The latest Sold data is:")
@@ -88,7 +100,7 @@ def read_data(): # I wrote this looking at https://docs.gspread.org/
         for sold_row in sold_data:
             print(sold_row)
 
-    elif choose_data == "P":
+    # elif choose_data == "P":
         worksheet = SHEET.worksheet("price")
 
         print("The latest Price is:")
@@ -97,14 +109,14 @@ def read_data(): # I wrote this looking at https://docs.gspread.org/
         for price_row in price_data:
             print(price_row)
 
-    elif choose_data == "R":
+    # elif choose_data == "R":
         worksheet = SHEET.worksheet("revenue")
 
         print("The latest Revenue is:")
         revenue_data = worksheet.get_all_values()
         revenue_data = revenue_data[-1]
         for revenue_row in revenue_data:
-            print(revenue_row)
+           # print(revenue_row)
 
 
 # def calculate_stock_data()
