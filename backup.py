@@ -62,3 +62,19 @@ def main():
     data = read_data()
 #    sold_data = [int(num) for num in "sold"]
     stock_data = [num for num in "stock"]
+
+
+    def insert_data(data, worksheet):   # From Love Sandwiches walkthrough project
+    """
+    Allows user to insert Sold data to calculate stock
+    """
+    print("Updating Sold worksheet...\n")
+    insert_data = SHEET.worksheet("sold")
+    insert_data.append_row(data)
+    print("Sold data updated successfully!")
+
+
+           # icecreams = SHEET.worksheet("icecreams")
+       # icecream_taste = self.taste
+        #for icecream_taste in icecreams(len(first_column)):
+         #   print(first_column[0].value)

@@ -60,19 +60,77 @@ class Icecream:
         print(f"Supplier = {self.supplier}\n")
 
 
+def tastes_available():
+    """
+    Displays the tastes available and gives choice
+    to get more info for specific taste
+    """
+    print("The tastes available are:\n")
+    icecream_taste = [item for item in SHEET.worksheet("icecreams").col_values(1) if item]
+    for item in icecream_taste:
+        print(item)
+    
+    taste_choice()
+        
+
+def taste_choice():
+    """
+    Makes the user decide if they want more info
+    about tastes or if they wish to go back to 
+    menu
+    """
+    info_or_menu = input("Type I for info about tastes or X for Menu: \n")    
+    if info_or_menu == "I":
+        read_data()
+    elif info_or_menu == "X":
+        select_menu()
+    else:
+        print("Wrong selection!")
+        info_or_menu()
+
+
 def read_data():
     """
-    XXX
+    Gives the user all the info available
+    about a specific icecream taste
     """
-    icecream_taste = input("Please enter an icecream taste (ex. Chocolate): \n")
+    icecream_taste = input("Please enter icecream taste: \n")
 
-    if(icecream_taste in SHEET.worksheet("icecreams").col_values(0)):
-        my_icecream = Icecream(my_icecream)
-        my_icecream.display_information()
+    if (icecream_taste in SHEET.worksheet("icecreams").col_values(0)):
+        my_icecream = Icecream(icecream_taste)
+        my_icecream.show_data(self)
     else:
         print("Icecream not found")
-    
 
+
+# def low_fat()
+    """
+    Gives the user the 3 ice cream tastes
+    with the least amount of fat
+    """
+
+
+# def high_prot()
+    """
+    Gives the user the 3 ice cream tastes
+    with the highest amout of protein
+    """
+
+# def low_carbs()
+    """
+    Gives the user the 3 ice cream tastes
+    with the least amount of carbs
+    """
+
+
+# def most_profit()
+    """
+    Gives the user the 3 ice cream tastes
+    that are most profitable
+    """
+
+
+# def exit_pitone()
 
 
 def validate_data(values):     # From Love Sandwiches walkthrough project
@@ -92,23 +150,14 @@ def validate_data(values):     # From Love Sandwiches walkthrough project
     return True
 
 
-def insert_data(data, worksheet):   # From Love Sandwiches walkthrough project
-    """
-    Allows user to insert Sold data to calculate stock
-    """
-    print("Updating Sold worksheet...\n")
-    insert_data = SHEET.worksheet("sold")
-    insert_data.append_row(data)
-    print("Sold data updated successfully!")
-
-def select_menu(): # I wrote this
+def select_menu():   # I wrote this
     """
     Asks user if they wish to read or insert data.
     They can insert sold data or read any data.
     """
 
     print("╔════════════════════════════╗")
-    print("║     >>GELATO PITONE<<      ║")
+    print("║  <===GELATO===PITONE===:>- ║")
     print("╠════════════════════════════╣")
     print("║     Select your choice     ║")
     print("║                            ║")
@@ -121,7 +170,7 @@ def select_menu(): # I wrote this
     print("╚════════════════════════════╝")
     select_menu = input(" \n")
     if select_menu == "A":
-        read_data()
+        tastes_available()
     elif select_menu == "B":
         low_fat()
     elif select_menu == "C":
@@ -133,7 +182,7 @@ def select_menu(): # I wrote this
     elif select_menu == "F":
         exit_pitone()
     else:
-        print("Error message! Please insert A, B, C, D, E or F")
+        print("Error message! Chose A, B, C, D, E or F")
         select_menu()
 
 
