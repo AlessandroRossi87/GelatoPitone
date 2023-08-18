@@ -25,7 +25,7 @@ calories = SHEET.worksheet("icecreams").col_values(8)
 supplier = SHEET.worksheet("icecreams").col_values(9)
 
 
-class Icecream:
+class IceCream:
     """
     Class for icecream from the worksheet
     """
@@ -33,16 +33,16 @@ class Icecream:
 
     def __init__(self, icecream_taste):
         for icecream in icecreams:
-            if icecream_taste == icecream[0]:
-                self.ingredients = icecream[1]
-                self.vegan = icecream[2]
-                self.price = icecream[3]
-                self.retail_price = icecream[4]
-                self.fat = icecream[5]
-                self.carbs = icecream[6]
-                self.protein = icecream[7]
-                self.calories = icecream[8]
-                self.supplier = icecream[9]
+            if icecream_taste == icecreams[0]:
+                self.ingredients = icecreams[1]
+                self.vegan = icecreams[2]
+                self.price = icecreams[3]
+                self.retail_price = icecreams[4]
+                self.fat = icecreams[5]
+                self.carbs = icecreams[6]
+                self.protein = icecreams[7]
+                self.calories = icecreams[8]
+                self.supplier = icecreams[9]
 
     def show_data(self):
         """"
@@ -67,6 +67,7 @@ def tastes_available():
     """
     print("The tastes available are:\n")
     icecream_taste = [item for item in SHEET.worksheet("icecreams").col_values(1) if item]
+    icecream_taste.pop(0)  # takes away header from list
     for item in icecream_taste:
         print(item)
     
@@ -86,29 +87,29 @@ def taste_choice():
         select_menu()
     else:
         print("Wrong selection!")
-        info_or_menu()
+        tastes_available()
 
 
 def read_data():
     """
-    Gives the user all the info available
+    Gives the user all the info availabl
     about a specific icecream taste
     """
     icecream_taste = input("Please enter icecream taste: \n")
 
     if (icecream_taste in SHEET.worksheet("icecreams").col_values(0)):
         my_icecream = Icecream(icecream_taste)
-        my_icecream.show_data(self)
+        my_icecream.show_data()
     else:
         print("Icecream not found")
 
 
-# def low_fat()
+# def low_fat():
     """
     Gives the user the 3 ice cream tastes
     with the least amount of fat
     """
-
+    print
 
 # def high_prot()
     """
@@ -131,23 +132,6 @@ def read_data():
 
 
 # def exit_pitone()
-
-
-def validate_data(values):     # From Love Sandwiches walkthrough project
-    """
-    Validates the date insert
-    """
-    try:
-        [int(value) for value in values]
-        if len(values) != 5:
-            raise ValueError(
-                f"You provided {len(values)} instead of 5 values required"
-            )
-    except ValueError as e:
-        print(f"Invalid data: {e}, try again.\n")
-        return False
-
-    return True
 
 
 def select_menu():   # I wrote this

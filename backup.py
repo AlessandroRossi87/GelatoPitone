@@ -78,3 +78,20 @@ def main():
        # icecream_taste = self.taste
         #for icecream_taste in icecreams(len(first_column)):
          #   print(first_column[0].value)
+        
+
+        def validate_data(values):     # From Love Sandwiches walkthrough project
+    """
+    Validates the date insert
+    """
+    try:
+        [int(value) for value in values]
+        if len(values) != 5:
+            raise ValueError(
+                f"You provided {len(values)} instead of 5 values required"
+            )
+    except ValueError as e:
+        print(f"Invalid data: {e}, try again.\n")
+        return False
+
+    return True
