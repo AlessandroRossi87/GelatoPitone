@@ -22,7 +22,7 @@ fat = SHEET.worksheet("icecreams").col_values(5)
 carbs = SHEET.worksheet("icecreams").col_values(6)
 protein = SHEET.worksheet("icecreams").col_values(7)
 calories = SHEET.worksheet("icecreams").col_values(8)
-calories = SHEET.worksheet("icecreams").col_values(9)
+supplier = SHEET.worksheet("icecreams").col_values(9)
 
 
 class Icecream:
@@ -34,15 +34,15 @@ class Icecream:
     def __init__(self, icecream_taste):
         for icecream in icecreams:
             if icecream_taste == icecream[0]:
-                self.ingredients == icecream[1]
-                self.vegan == icecream[2]
-                self.price == icecream[3]
-                self.retail_price == icecream[4]
-                self.fat == icecream[5]
-                self.carbs == icecream[6]
-                self.protein == icecream[7]
-                self.calories == icecream[8]
-                self.supplier == icecream[9]
+                self.ingredients = icecream[1]
+                self.vegan = icecream[2]
+                self.price = icecream[3]
+                self.retail_price = icecream[4]
+                self.fat = icecream[5]
+                self.carbs = icecream[6]
+                self.protein = icecream[7]
+                self.calories = icecream[8]
+                self.supplier = icecream[9]
 
     def show_data(self):
         """"
@@ -71,6 +71,8 @@ def read_data():
         my_icecream.display_information()
     else:
         print("Icecream not found")
+    
+
 
 
 def validate_data(values):     # From Love Sandwiches walkthrough project
@@ -99,22 +101,40 @@ def insert_data(data, worksheet):   # From Love Sandwiches walkthrough project
     insert_data.append_row(data)
     print("Sold data updated successfully!")
 
-def read_or_insert_data(): # I wrote this
+def select_menu(): # I wrote this
     """
     Asks user if they wish to read or insert data.
     They can insert sold data or read any data.
     """
-    print("Welcome to Gelato Pitone")
-    print("Do you wish to read or inser data?")
-    read_or_insert = input("Enter R for Read or I for Insert:\n")
-    if read_or_insert == "R":
-        read_data
-    elif read_or_insert == "I":
-        insert_data = input("Insert Sold data:\n")
 
-        sold_data = insert_data.split(",")
-        if validate_data(sold_data):
-            print("Data is valid!")
-        insert_data
+    print("╔════════════════════════════╗")
+    print("║     >>GELATO PITONE<<      ║")
+    print("╠════════════════════════════╣")
+    print("║     Select your choice     ║")
+    print("║                            ║")
+    print("║    A: Tastes available     ║")
+    print("║    B: Low fat              ║")
+    print("║    C: High protein         ║")
+    print("║    D: Low carbs            ║")
+    print("║    E: Most profitable      ║")
+    print("║    F: Exit                 ║")
+    print("╚════════════════════════════╝")
+    select_menu = input(" \n")
+    if select_menu == "A":
+        read_data()
+    elif select_menu == "B":
+        low_fat()
+    elif select_menu == "C":
+        high_prot()
+    elif select_menu == "D":
+        low_carbs()
+    elif select_menu == "E":
+        most_profit()
+    elif select_menu == "F":
+        exit_pitone()
+    else:
+        print("Error message! Please insert A, B, C, D, E or F")
+        select_menu()
 
-read_or_insert_data()
+
+select_menu()
