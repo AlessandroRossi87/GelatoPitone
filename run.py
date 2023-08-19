@@ -14,6 +14,7 @@ SHEET = GSPREAD_CLIENT.open("icecream_sheet")
 
 icecreams = SHEET.worksheet("icecreams").get_all_values()
 
+taste = SHEET.worksheet("icecreams").col_values(0)
 ingredients = SHEET.worksheet("icecreams").col_values(1)
 vegan = SHEET.worksheet("icecreams").col_values(2)
 price = SHEET.worksheet("icecreams").col_values(3)
@@ -32,7 +33,7 @@ class IceCream:
     global icecreams
 
     def __init__(self, icecream_taste):
-        for icecream in icecreams:
+        for IceCream in icecreams:
             if icecream_taste == icecreams[0]:
                 self.taste = icecreams[0]
                 self.ingredients = icecreams[1]
@@ -98,8 +99,8 @@ def read_data():
     """
     icecream_taste = input("Please enter icecream taste: \n")
 
-    if (icecream_taste in SHEET.worksheet("icecreams").col_values(0)):
-        my_icecream = icecream(icecream_taste)
+    if (icecream_taste in SHEET.worksheet("icecreams").col_values(1)):
+        my_icecream = IceCream(icecream_taste)
         my_icecream.show_data()
     else:
         print("Icecream not found")
@@ -112,7 +113,7 @@ def inner_menu():
     """
     info_or_menu = input("Type taste for more info, M for menu or X for Exit: \n")
     if (info_or_menu in SHEET.worksheet("icecreams").col_values(0)):
-        my_icecream = icecream(info_or_menu)
+        my_icecream = IceCream(info_or_menu)
         my_icecream.show_data()
     elif info_or_menu == "m":
         user_choice()
