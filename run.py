@@ -116,7 +116,7 @@ def low_fat():
         print(icecream[0])
 
 
-# def high_prot()
+def high_prot():
     """
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
@@ -127,11 +127,16 @@ def low_fat():
     for icecream in sorted_prot[:3]:
         print(icecream[0])
 
-# def low_carbs()
+def low_carbs()
     """
     Gives the user the 3 ice cream tastes
     with the least amount of carbs
     """
+    sorted_carb = sorted(icecreams[1:], key=lambda x: float(x[6]) if x[6] else 0.0)
+
+    print("Icecream tastes with lowest fat are:\n")
+    for icecream in sorted_carb[:3]:
+        print(icecream[0])
 
 
 # def most_profit()
@@ -177,7 +182,7 @@ def user_choice():   # I wrote this
         exit_pitone()
     else:
         print("Error message! Chose A, B, C, D, E or F")
-        select_menu()
+        user_choice()
 
 
 user_choice()
