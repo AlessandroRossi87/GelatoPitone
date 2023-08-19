@@ -143,7 +143,7 @@ def high_prot():
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
     """
-    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0)
+    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0, reverse=True)  #Reverse in order to show highest values
 
     print("Icecream tastes with highest proteins are:\n")
     for icecream in sorted_prot[:3]:
@@ -159,7 +159,7 @@ def low_carbs():
     """
     sorted_carb = sorted(icecreams[1:], key=lambda x: float(x[6]) if x[6] else 0.0)
 
-    print("Icecream tastes with carbs fat are: \n")
+    print("Icecream tastes with lowest carbs are: \n")
     for icecream in sorted_carb[:3]:
         print(icecream[0])
 
@@ -171,19 +171,28 @@ def low_calories():
     Gives the user the 3 ice cream tastes
     with the least amout of calories
     """
-    sorted_carb = sorted(icecreams[1:], key=lambda x: float(x[8]) if x[8] else 0.0)
+    sorted_calories = sorted(icecreams[1:], key=lambda x: float(x[8]) if x[8] else 0.0)
 
-    print("Icecream tastes with carbs fat are: \n")
-    for icecream in sorted_carb[:3]:
+    print("Icecream tastes with lowest calories are: \n")
+    for icecream in sorted_calories[:3]:
         print(icecream[0])
 
     inner_menu()  
 
-# def most_profit()
+
+def most_profit():
     """
     Gives the user the 3 ice cream tastes
     that are most profitable
     """
+    icecream_profit = retail_price - price
+    sorted_profit = sorted(icecream_profit[1:])
+
+    print("Icecream tastes with highest profit are: \n")
+    for icecream in sorted_profit[:3]:
+        print(icecream_profit[0])
+
+    inner_menu()
 
 
 # def exit_pitone()
