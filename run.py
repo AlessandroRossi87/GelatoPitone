@@ -104,12 +104,17 @@ def read_data():
         print("Icecream not found")
 
 
-# def low_fat():
+def low_fat():
     """
     Gives the user the 3 ice cream tastes
     with the least amount of fat
     """
-    print
+    sorted_low = sorted(icecreams[1:], key=lambda x: float(x[5]) if x[5] else 0.0)
+
+    print("Icecream tastes with lowest fat are:\n")
+    for icecream in sorted_low[:3]:
+        print(icecream[0])
+
 
 # def high_prot()
     """
@@ -153,21 +158,21 @@ def user_choice():   # I wrote this
     print("║    F: Exit                 ║")
     print("╚════════════════════════════╝")
     select_menu = input(" \n")
-    if select_menu == "A":
+    if select_menu == "a":
         tastes_available()
-    elif select_menu == "B":
+    elif select_menu == "b":
         low_fat()
-    elif select_menu == "C":
+    elif select_menu == "c":
         high_prot()
-    elif select_menu == "D":
+    elif select_menu == "d":
         low_carbs()
-    elif select_menu == "E":
+    elif select_menu == "e":
         most_profit()
-    elif select_menu == "F":
+    elif select_menu == "f":
         exit_pitone()
     else:
         print("Error message! Chose A, B, C, D, E or F")
         select_menu()
 
 
-select_menu()
+user_choice()
