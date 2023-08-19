@@ -34,6 +34,7 @@ class IceCream:
     def __init__(self, icecream_taste):
         for icecream in icecreams:
             if icecream_taste == icecreams[0]:
+                self.taste = icecreams[0]
                 self.ingredients = icecreams[1]
                 self.vegan = icecreams[2]
                 self.price = icecreams[3]
@@ -80,7 +81,7 @@ def taste_choice():
     about tastes or if they wish to go back to 
     menu
     """
-    info_or_menu = input("Type I for info about tastes or X for Menu: \n")    
+    info_or_menu = input("Type I for info about tastes or M for Menu: \n")    
     if info_or_menu == "I":
         read_data()
     elif info_or_menu == "X":
@@ -98,10 +99,28 @@ def read_data():
     icecream_taste = input("Please enter icecream taste: \n")
 
     if (icecream_taste in SHEET.worksheet("icecreams").col_values(0)):
-        my_icecream = Icecream(icecream_taste)
+        my_icecream = icecream(icecream_taste)
         my_icecream.show_data()
     else:
         print("Icecream not found")
+
+
+def inner_menu():
+    """
+    Gives user possibility to have more info
+    about specific taste or go back to main menu
+    """
+    info_or_menu = input("Type taste for more info, M for menu or X for Exit: \n")
+    if (info_or_menu in SHEET.worksheet("icecreams").col_values(0)):
+        my_icecream = icecream(info_or_menu)
+        my_icecream.show_data()
+    elif info_or_menu == "m":
+        user_choice()
+    elif info_or_menu == "x":
+        exit_pitone()
+    else:
+        print("Error message! Choose Taste, M for Menu or X for Exit")
+        inner_menu()
 
 
 def low_fat():
@@ -114,6 +133,8 @@ def low_fat():
     print("Icecream tastes with lowest fat are:\n")
     for icecream in sorted_fat[:3]:
         print(icecream[0])
+        
+    inner_menu()
 
 
 def high_prot():
@@ -127,7 +148,10 @@ def high_prot():
     for icecream in sorted_prot[:3]:
         print(icecream[0])
 
-def low_carbs()
+    inner_menu()
+
+
+def low_carbs():
     """
     Gives the user the 3 ice cream tastes
     with the least amount of carbs
@@ -137,6 +161,8 @@ def low_carbs()
     print("Icecream tastes with lowest fat are:\n")
     for icecream in sorted_carb[:3]:
         print(icecream[0])
+
+    inner_menu()
 
 
 # def most_profit()
@@ -154,7 +180,6 @@ def user_choice():   # I wrote this
     Asks user if they wish to read or insert data.
     They can insert sold data or read any data.
     """
-
     print("╔════════════════════════════╗")
     print("║  <===GELATO===PITONE===:>- ║")
     print("╠════════════════════════════╣")
