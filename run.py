@@ -14,16 +14,16 @@ SHEET = GSPREAD_CLIENT.open("icecream_sheet")
 
 icecreams = SHEET.worksheet("icecreams").get_all_values()
 
-taste = SHEET.worksheet("icecreams").col_values(0)
-ingredients = SHEET.worksheet("icecreams").col_values(1)
-vegan = SHEET.worksheet("icecreams").col_values(2)
-price = SHEET.worksheet("icecreams").col_values(3)
-retail_price = SHEET.worksheet("icecreams").col_values(4)
-fat = SHEET.worksheet("icecreams").col_values(5)
-carbs = SHEET.worksheet("icecreams").col_values(6)
-protein = SHEET.worksheet("icecreams").col_values(7)
-calories = SHEET.worksheet("icecreams").col_values(8)
-supplier = SHEET.worksheet("icecreams").col_values(9)
+taste = SHEET.worksheet("icecreams").col_values(1)
+ingredients = SHEET.worksheet("icecreams").col_values(2)
+vegan = SHEET.worksheet("icecreams").col_values(3)
+price = SHEET.worksheet("icecreams").col_values(4)
+retail_price = SHEET.worksheet("icecreams").col_values(5)
+fat = SHEET.worksheet("icecreams").col_values(6)
+carbs = SHEET.worksheet("icecreams").col_values(7)
+protein = SHEET.worksheet("icecreams").col_values(8)
+calories = SHEET.worksheet("icecreams").col_values(9)
+supplier = SHEET.worksheet("icecreams").col_values(10)
 
 
 class IceCream:
@@ -50,7 +50,7 @@ class IceCream:
         """"
         Creating new fuction to read model data
         """
-        print(f"Taste = {self.taste}\n")
+        # print(f"Taste = {self.taste}\n")
         print(f"Ingredients = {self.ingredients}\n")
         print(f"Vegan = {self.vegan}\n")
         print(f"Price = {self.price}\n")
@@ -112,7 +112,7 @@ def inner_menu():
     about specific taste or go back to main menu
     """
     info_or_menu = input("Type taste for more info, M for menu or X for Exit: \n")
-    if (info_or_menu in SHEET.worksheet("icecreams").col_values(0)):
+    if (info_or_menu in SHEET.worksheet("icecreams").col_values(1)):
         my_icecream = IceCream(info_or_menu)
         my_icecream.show_data()
     elif info_or_menu == "m":
@@ -159,12 +159,25 @@ def low_carbs():
     """
     sorted_carb = sorted(icecreams[1:], key=lambda x: float(x[6]) if x[6] else 0.0)
 
-    print("Icecream tastes with lowest fat are: \n")
+    print("Icecream tastes with carbs fat are: \n")
     for icecream in sorted_carb[:3]:
         print(icecream[0])
 
     inner_menu()
 
+
+def low_calories():
+    """
+    Gives the user the 3 ice cream tastes
+    with the least amout of calories
+    """
+    sorted_carb = sorted(icecreams[1:], key=lambda x: float(x[8]) if x[8] else 0.0)
+
+    print("Icecream tastes with carbs fat are: \n")
+    for icecream in sorted_carb[:3]:
+        print(icecream[0])
+
+    inner_menu()  
 
 # def most_profit()
     """
@@ -190,7 +203,8 @@ def user_choice():   # I wrote this
     print("║    B: Low fat              ║")
     print("║    C: High protein         ║")
     print("║    D: Low carbs            ║")
-    print("║    E: Most profitable      ║")
+    print("║    E: Low calories         ║")
+    print("║    F: Most profitable      ║")
     print("║    X: Exit                 ║")
     print("╚════════════════════════════╝")
     select_menu = input(" \n")
@@ -203,6 +217,8 @@ def user_choice():   # I wrote this
     elif select_menu == "d":
         low_carbs()
     elif select_menu == "e":
+        low_calories()
+    elif select_menu == "f":
         most_profit()
     elif select_menu == "x":
         exit_pitone()
