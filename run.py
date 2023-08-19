@@ -84,7 +84,7 @@ def taste_choice():
     if info_or_menu == "I":
         read_data()
     elif info_or_menu == "X":
-        select_menu()
+        user_choice()
     else:
         print("Wrong selection!")
         tastes_available()
@@ -134,7 +134,7 @@ def read_data():
 # def exit_pitone()
 
 
-def select_menu():   # I wrote this
+def user_choice():   # I wrote this
     """
     Asks user if they wish to read or insert data.
     They can insert sold data or read any data.
