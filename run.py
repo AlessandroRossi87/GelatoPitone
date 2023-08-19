@@ -66,7 +66,7 @@ def tastes_available():
     Displays the tastes available and gives choice
     to get more info for specific taste
     """
-    print("The tastes available are:\n")
+    print("The tastes available are: \n")
     icecream_taste = [item for item in SHEET.worksheet("icecreams").col_values(1) if item]
     icecream_taste.pop(0)  # takes away header from list
     for item in icecream_taste:
@@ -82,9 +82,9 @@ def taste_choice():
     menu
     """
     info_or_menu = input("Type I for info about tastes or M for Menu: \n")    
-    if info_or_menu == "I":
+    if info_or_menu == "i":
         read_data()
-    elif info_or_menu == "X":
+    elif info_or_menu == "m":
         user_choice()
     else:
         print("Wrong selection!")
@@ -130,7 +130,7 @@ def low_fat():
     """
     sorted_fat = sorted(icecreams[1:], key=lambda x: float(x[5]) if x[5] else 0.0)
 
-    print("Icecream tastes with lowest fat are:\n")
+    print("Icecream tastes with lowest fat are: \n")
     for icecream in sorted_fat[:3]:
         print(icecream[0])
         
@@ -158,7 +158,7 @@ def low_carbs():
     """
     sorted_carb = sorted(icecreams[1:], key=lambda x: float(x[6]) if x[6] else 0.0)
 
-    print("Icecream tastes with lowest fat are:\n")
+    print("Icecream tastes with lowest fat are: \n")
     for icecream in sorted_carb[:3]:
         print(icecream[0])
 
@@ -190,7 +190,7 @@ def user_choice():   # I wrote this
     print("║    C: High protein         ║")
     print("║    D: Low carbs            ║")
     print("║    E: Most profitable      ║")
-    print("║    F: Exit                 ║")
+    print("║    X: Exit                 ║")
     print("╚════════════════════════════╝")
     select_menu = input(" \n")
     if select_menu == "a":
@@ -203,7 +203,7 @@ def user_choice():   # I wrote this
         low_carbs()
     elif select_menu == "e":
         most_profit()
-    elif select_menu == "f":
+    elif select_menu == "x":
         exit_pitone()
     else:
         print("Error message! Chose A, B, C, D, E or F")
