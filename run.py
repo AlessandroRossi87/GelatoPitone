@@ -26,7 +26,7 @@ calories = SHEET.worksheet("icecreams").col_values(9)
 supplier = SHEET.worksheet("icecreams").col_values(10)
 
 
-class IceCream:
+class IceCream:  # DOES IT WORK?
     """
     Class for icecream from the worksheet
     """
@@ -46,7 +46,7 @@ class IceCream:
                 self.calories = icecreams[8]
                 self.supplier = icecreams[9]
 
-    def show_data(self):
+    def show_data(self):  # DOES NOT WORK
         """"
         Creating new fuction to read model data
         """
@@ -62,7 +62,7 @@ class IceCream:
         print(f"Supplier = {self.supplier}\n")
 
 
-def tastes_available():
+def tastes_available():  # WORKS
     """
     Displays the tastes available and gives choice
     to get more info for specific taste
@@ -76,13 +76,14 @@ def tastes_available():
     taste_choice()
         
 
-def taste_choice():
+def taste_choice():   # WORKS
     """
     Makes the user decide if they want more info
     about tastes or if they wish to go back to 
     menu
     """
-    info_or_menu = input("Type I for info about tastes or M for Menu: \n")    
+    info_or_menu = input("Type I for info about tastes or M for Menu: \n")
+    info_or_menu = info_or_menu.lower()   
     if info_or_menu == "i":
         read_data()
     elif info_or_menu == "m":
@@ -92,7 +93,7 @@ def taste_choice():
         tastes_available()
 
 
-def read_data():
+def read_data():  # DOES NOT WORK
     """
     Gives the user all the info availabl
     about a specific icecream taste
@@ -106,12 +107,13 @@ def read_data():
         print("Icecream not found")
 
 
-def inner_menu():
+def inner_menu():   # WORKS
     """
     Gives user possibility to have more info
     about specific taste or go back to main menu
     """
     info_or_menu = input("Type taste for more info, M for menu or X for Exit: \n")
+    info_or_menu = info_or_menu.lower()
     if (info_or_menu in SHEET.worksheet("icecreams").col_values(1)):
         my_icecream = IceCream(info_or_menu)
         my_icecream.show_data()
@@ -124,7 +126,7 @@ def inner_menu():
         inner_menu()
 
 
-def low_fat():
+def low_fat():  # WORKS
     """
     Gives the user the 3 ice cream tastes
     with the least amount of fat
@@ -138,7 +140,7 @@ def low_fat():
     inner_menu()
 
 
-def high_prot():
+def high_prot():  # DOES NOT WORK
     """
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
@@ -152,7 +154,7 @@ def high_prot():
     inner_menu()
 
 
-def low_carbs():
+def low_carbs():   # WORKS
     """
     Gives the user the 3 ice cream tastes
     with the least amount of carbs
@@ -166,7 +168,7 @@ def low_carbs():
     inner_menu()
 
 
-def low_calories():
+def low_calories():  # WORKS
     """
     Gives the user the 3 ice cream tastes
     with the least amout of calories
@@ -180,7 +182,7 @@ def low_calories():
     inner_menu()  
 
 
-def most_profit():
+def most_profit():   # DOES NOT WORK
     """
     Gives the user the 3 ice cream tastes
     that are most profitable
@@ -195,10 +197,23 @@ def most_profit():
     inner_menu()
 
 
-# def exit_pitone()
+def exit_pitone():   # WORKS
+    """
+    Gives the user the option to exit program or
+    start again with main menu
+    """
+    exit_or_menu = input("Do you wish to exit? Y or N: \n")
+    exit_or_menu = exit_or_menu.lower()
+    if exit_or_menu == "y":
+        exit()
+    elif exit_or_menu == "n":
+        user_choice()
+    else:
+        print("Error message! Choose Y or N:")
+        exit_pitone()
 
 
-def user_choice():   # I wrote this
+def user_choice():   # I wrote this WORKS
     """
     Asks user if they wish to read or insert data.
     They can insert sold data or read any data.
@@ -217,6 +232,7 @@ def user_choice():   # I wrote this
     print("║    X: Exit                 ║")
     print("╚════════════════════════════╝")
     select_menu = input(" \n")
+    select_menu = select_menu.lower()
     if select_menu == "a":
         tastes_available()
     elif select_menu == "b":
