@@ -33,33 +33,36 @@ class IceCream:  # DOES IT WORK?
     global icecreams
 
     def __init__(self, icecream_taste):
-        for IceCream in icecreams:
-            if icecream_taste == icecreams[0]:
-                self.taste = icecreams[0]
-                self.ingredients = icecreams[1]
-                self.vegan = icecreams[2]
-                self.price = icecreams[3]
-                self.retail_price = icecreams[4]
-                self.fat = icecreams[5]
-                self.carbs = icecreams[6]
-                self.protein = icecreams[7]
-                self.calories = icecreams[8]
-                self.supplier = icecreams[9]
+        for icecream in icecreams:
+            if icecream_taste == icecream[0]:
+                self.taste = icecream[0]
+                self.ingredients = icecream[1]
+                self.vegan = icecream[2]
+                self.price = icecream[3]
+                self.retail_price = icecream[4]
+                self.fat = icecream[5]
+                self.carbs = icecream[6]
+                self.protein = icecream[7]
+                self.calories = icecream[8]
+                self.supplier = icecream[9]
 
-    def show_data(self):  # DOES NOT WORK
+    def show_data(self):  
         """"
-        Creating new fuction to read model data
+        Gives the user all data about a specific ste
         """
-        # print(f"Taste = {self.taste}\n")
-        print(f"Ingredients = {self.ingredients}\n")
-        print(f"Vegan = {self.vegan}\n")
-        print(f"Price = {self.price}\n")
-        print(f"Retail Price = {self.retail_price}\n")
-        print(f"Fat = {self.fat}\n")
-        print(f"Carbs = {self.carbs}\n")
-        print(f"Crotein = {self.protein}\n")
-        print(f"Calories = {self.calories}\n")
-        print(f"Supplier = {self.supplier}\n")
+        print("*******************************\n")
+        print(f"You selected <<{self.taste}>>\n")
+        print("*******************************\n")
+        print(f"Ingredients are {self.ingredients}\n")
+        print(f"Is it vegan? {self.vegan}\n")
+        print(f"The price is {self.price} EUR\n")
+        print(f"The retail price is {self.retail_price} EUR\n")
+        print(f"There are {self.fat} grams of fat per Kilo\n")
+        print(f"There are {self.carbs} grams of carbs per Kilo\n")
+        print(f"There are {self.protein} grams of proteins per Kilo\n")
+        print(f"There are {self.calories} calories per 100g\n")
+        print(f"Producer is {self.supplier}\n")
+        taste_choice()
 
 
 def tastes_available():  # WORKS
@@ -145,7 +148,7 @@ def high_prot():  # DOES NOT WORK
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
     """
-    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0, reverse=True)  #Reverse in order to show highest values
+    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0)  #Reverse in order to show highest values
 
     print("Icecream tastes with highest proteins are:\n")
     for icecream in sorted_prot[:3]:
