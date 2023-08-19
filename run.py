@@ -109,10 +109,10 @@ def low_fat():
     Gives the user the 3 ice cream tastes
     with the least amount of fat
     """
-    sorted_low = sorted(icecreams[1:], key=lambda x: float(x[5]) if x[5] else 0.0)
+    sorted_fat = sorted(icecreams[1:], key=lambda x: float(x[5]) if x[5] else 0.0)
 
     print("Icecream tastes with lowest fat are:\n")
-    for icecream in sorted_low[:3]:
+    for icecream in sorted_fat[:3]:
         print(icecream[0])
 
 
@@ -121,6 +121,11 @@ def low_fat():
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
     """
+    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0)
+
+    print("Icecream tastes with highest proteins are:\n")
+    for icecream in sorted_prot[:3]:
+        print(icecream[0])
 
 # def low_carbs()
     """
