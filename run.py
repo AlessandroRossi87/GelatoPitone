@@ -53,7 +53,7 @@ class IceCream:  # DOES IT WORK?
         print("*******************************\n")
         print(f"You selected <<{self.taste}>>\n")
         print("*******************************\n")
-        print(f"Ingredients are {self.ingredients}\n")
+        print(f"It contains {self.ingredients}\n")
         print(f"Is it vegan? {self.vegan}\n")
         print(f"The price is {self.price} EUR\n")
         print(f"The retail price is {self.retail_price} EUR\n")
@@ -92,8 +92,10 @@ def taste_choice():   # WORKS
     elif info_or_menu == "m":
         user_choice()
     else:
+        print("xxxxxxxxxxxxxxxxx")
         print("Wrong selection!")
-        tastes_available()
+        print("xxxxxxxxxxxxxxxxx\n")
+        taste_choice()
 
 
 def read_data():  # DOES NOT WORK
@@ -107,7 +109,11 @@ def read_data():  # DOES NOT WORK
         my_icecream = IceCream(icecream_taste)
         my_icecream.show_data()
     else:
+        print("xxxxxxxxxxxxxxxxxxxx")
         print("Icecream not found")
+        print("xxxxxxxxxxxxxxxxxxxx\n")
+    
+    read_data()
 
 
 def inner_menu():   # WORKS
@@ -125,7 +131,9 @@ def inner_menu():   # WORKS
     elif info_or_menu == "x":
         exit_pitone()
     else:
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         print("Error message! Choose Taste, M for Menu or X for Exit")
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
         inner_menu()
 
 
@@ -143,12 +151,12 @@ def low_fat():  # WORKS
     inner_menu()
 
 
-def high_prot():  # DOES NOT WORK
+def high_prot(): # WORKS
     """
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
     """
-    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0)  #Reverse in order to show highest values
+    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0, reverse=True)  #Reverse in order to show highest values
 
     print("Icecream tastes with highest proteins are:\n")
     for icecream in sorted_prot[:3]:
@@ -212,7 +220,9 @@ def exit_pitone():   # WORKS
     elif exit_or_menu == "n":
         user_choice()
     else:
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         print("Error message! Choose Y or N:")
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
         exit_pitone()
 
 
@@ -222,9 +232,12 @@ def user_choice():   # I wrote this WORKS
     They can insert sold data or read any data.
     """
     print("╔════════════════════════════╗")
-    print("║  <===GELATO===PITONE===:>- ║")
-    print("╠════════════════════════════╣")
-    print("║     Select your choice     ║")
+    print("║   G E L A T O              ║")
+    print("║  <=====================:>- ║")
+    print("║              P I T O N E   ║")
+    print("║////////////////////////////║")
+    print("║                            ║")
+    print("║     Select your choice:    ║")
     print("║                            ║")
     print("║    A: Tastes available     ║")
     print("║    B: Low fat              ║")
@@ -233,6 +246,7 @@ def user_choice():   # I wrote this WORKS
     print("║    E: Low calories         ║")
     print("║    F: Most profitable      ║")
     print("║    X: Exit                 ║")
+    print("║                            ║")
     print("╚════════════════════════════╝")
     select_menu = input(" \n")
     select_menu = select_menu.lower()
@@ -251,7 +265,9 @@ def user_choice():   # I wrote this WORKS
     elif select_menu == "x":
         exit_pitone()
     else:
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
         print("Error message! Chose A, B, C, D, E or F")
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
         user_choice()
 
 
