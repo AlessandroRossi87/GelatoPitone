@@ -116,13 +116,14 @@ def read_data():  # DOES NOT WORK
     read_data()
 
 
-def inner_menu():   # WORKS
+def inner_menu():   # DOES NOT WORK
     """
     Gives user possibility to have more info
     about specific taste or go back to main menu
     """
     info_or_menu = input("Type taste for more info, M for menu or X for Exit: \n")
     info_or_menu = info_or_menu.lower()
+
     if (info_or_menu in SHEET.worksheet("icecreams").col_values(1)):
         my_icecream = IceCream(info_or_menu)
         my_icecream.show_data()
@@ -208,6 +209,21 @@ def most_profit():   # DOES NOT WORK
     inner_menu()
 
 
+def vegan_icecream():
+    """
+    Provides the user with list
+    of vegan tastes
+    """
+    vegan_tastes = [icecream[0] for icecream in icecreams[1:] if icecream[2].lower() == "yes"]
+
+    if vegan_tastes:
+        print("The vegan tasteas are:")
+        for icecream in vegan_tastes:
+            print(icecream)
+
+    inner_menu()
+
+
 def exit_pitone():   # WORKS
     """
     Gives the user the option to exit program or
@@ -245,6 +261,7 @@ def user_choice():   # I wrote this WORKS
     print("║    D: Low carbs            ║")
     print("║    E: Low calories         ║")
     print("║    F: Most profitable      ║")
+    print("║    G: Vegan options        ║")
     print("║    X: Exit                 ║")
     print("║                            ║")
     print("╚════════════════════════════╝")
@@ -262,6 +279,8 @@ def user_choice():   # I wrote this WORKS
         low_calories()
     elif select_menu == "f":
         most_profit()
+    elif select_menu == "g":
+        vegan_icecream()
     elif select_menu == "x":
         exit_pitone()
     else:
@@ -271,4 +290,4 @@ def user_choice():   # I wrote this WORKS
         user_choice()
 
 
-user_choice()
+user_choice() # This function starts the user iteraction
