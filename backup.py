@@ -95,3 +95,24 @@ def main():
         return False
 
     return True
+
+
+
+    def supplier_list():
+    """
+    Creates a list of tastes produced by each supplier
+    """
+    suppliers = {}
+
+    for icecream in icecreams[1:]:
+        taste = icecream[0]
+        supplier_name = icecream[9]
+
+        if supplier_name in suppliers:
+            suppliers[supplier_name].append(taste)
+        else:
+            suppliers[supplier_name] = [taste]
+
+    print("The suppliers produce the following tastes:")
+    for supplier_name, taste_list in suppliers.items():
+        print(f"{supplier_name}: {', '.join(taste_list)}")

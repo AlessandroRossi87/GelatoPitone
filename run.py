@@ -14,7 +14,7 @@ SHEET = GSPREAD_CLIENT.open("icecream_sheet")
 
 icecreams = SHEET.worksheet("icecreams").get_all_values()
 
-taste = SHEET.worksheet("icecreams").col_values(1)
+taste = SHEET.worksheet("icecreams").col_values(1) # col_values start with 1 not 0
 ingredients = SHEET.worksheet("icecreams").col_values(2)
 vegan = SHEET.worksheet("icecreams").col_values(3)
 price = SHEET.worksheet("icecreams").col_values(4)
@@ -98,7 +98,7 @@ def taste_choice():   # WORKS
         taste_choice()
 
 
-def read_data():  # DOES NOT WORK
+def read_data():  # WORKS
     """
     Gives the user all the info availabl
     about a specific icecream taste
@@ -116,17 +116,15 @@ def read_data():  # DOES NOT WORK
     read_data()
 
 
-def inner_menu():   # DOES NOT WORK
+def inner_menu():   # WORKS
     """
     Gives user possibility to have more info
     about specific taste or go back to main menu
     """
-    info_or_menu = input("Type taste for more info, M for menu or X for Exit: \n")
+    info_or_menu = input("Type T for tastes, M for menu or X for Exit: \n")
     info_or_menu = info_or_menu.lower()
-
-    if (info_or_menu in SHEET.worksheet("icecreams").col_values(1)):
-        my_icecream = IceCream(info_or_menu)
-        my_icecream.show_data()
+    if info_or_menu == "t":
+        read_data()
     elif info_or_menu == "m":
         user_choice()
     elif info_or_menu == "x":
@@ -194,7 +192,7 @@ def low_calories():  # WORKS
     inner_menu()  
 
 
-def most_profit():   # DOES NOT WORK
+### def most_profit():   # DOES NOT WORK
     """
     Gives the user the 3 ice cream tastes
     that are most profitable
@@ -209,7 +207,7 @@ def most_profit():   # DOES NOT WORK
     inner_menu()
 
 
-def vegan_icecream():
+def vegan_icecream():  #WORKS
     """
     Provides the user with list
     of vegan tastes
@@ -260,7 +258,7 @@ def user_choice():   # I wrote this WORKS
     print("║    C: High protein         ║")
     print("║    D: Low carbs            ║")
     print("║    E: Low calories         ║")
-    print("║    F: Most profitable      ║")
+    print("║    F: XXXXXXX              ║")
     print("║    G: Vegan options        ║")
     print("║    X: Exit                 ║")
     print("║                            ║")
@@ -278,7 +276,7 @@ def user_choice():   # I wrote this WORKS
     elif select_menu == "e":
         low_calories()
     elif select_menu == "f":
-        most_profit()
+        XXXX
     elif select_menu == "g":
         vegan_icecream()
     elif select_menu == "x":
