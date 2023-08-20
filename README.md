@@ -72,11 +72,21 @@ Please notice that after the program returns information to the user it also ena
 
 ![Validator](XXXXXXXXX)
 
+### Known Bugs
+
+At the moment of deployment there were no know bugs. The deployed website was tested on Google Chrome and Safari.
+
 ### Fixed Bugs
 
-- One error it took me quite some time to figure out was that .col_values method uses a 1 based index instead of 0. Once I was reminded of that I was able to make my model work perfectly.
+- One major bug during my coding was that .col_values method uses a 1 based index instead of 0. Once I was reminded of that I was able to make my model work perfectly.
 
 ![col_values](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/colvalues.png)
+
+- I also had troubles with the high_prot function because the terminal was always returning the three tastes with the least amount. I then discovered the reverse=true argument to reverse sorting order.
+
+### User Experience
+
+All users who tested the deployed website on Heroku found the website easy to navigate and logically organized. One user had wished for more decorative graphic features in the terminal but I decided to focus on the back end of the site.
 
 ## Deployment
 
@@ -89,7 +99,7 @@ Please notice that after the program returns information to the user it also ena
 
 ## Credits
 
-- I have been following the Love Sandwiches walkthrough project as a reference to how structure my program. Specifically the connection with Google API was done following the walkthrough project.
+- I have been following the Love Sandwiches walkthrough project as a reference to how structure my program. Specifically the connection with Google API was done following the walkthrough project. [Love Sandwiches](https://github.com/AlessandroRossi87/love-sandwiches)
 - The dataset was created on [ChatGPT](https://chat.openai.com/auth/login) by requesting 15 ice cream tastes for the headings I provided. I consequently modified the dataset to better fit the purposes of this project as I was moving along.
 - The main menu graphics in ASCII was also created partly with [ChatGPT](https://chat.openai.com/auth/login) and then modified by me.
 - The code for the read function was created from [docs.gspread.org](https://docs.gspread.org/en/latest/user-guide.html#getting-all-values-from-a-row-or-a-column)
@@ -97,6 +107,7 @@ Please notice that after the program returns information to the user it also ena
 - The code for the list comprehension with an if statement was created from [StackOverflow](https://stackoverflow.com/questions/4260280/if-else-in-a-list-comprehension)
 - The exit() function was created from [FreeCodeCamp](https://www.freecodecamp.org/news/python-exit-how-to-use-an-exit-function-in-python-to-stop-a-program/)
 - The class IceCream and its model were created from [W3](https://www.w3schools.com/python/python_classes.asp)
+- The reverse=true argument was found on [StackOverflow](https://stackoverflow.com/questions/35800325/where-can-i-put-reverse-true-to-reverse-sorting-order)
 - The flowchart was created in [LucidArt](https://www.lucidart.com/)
 
 ## Acknowledgements
