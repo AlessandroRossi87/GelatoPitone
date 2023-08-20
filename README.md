@@ -14,6 +14,12 @@ Here is a flowchart representing the original idea for my project:
 
 Nevertheless after speaking with Luke Buchanan I realized that my project would be too similar to the walkthrough project so I decided to have a more complex datasheet where each ice cream taste would have different types of data attached to it, both integers and text.
 
+Here is a simplified flowchart representing how the project evolved:
+
+![LucidApp](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/newflowchart.png)
+
+## The data set from the spreadsheet
+
 ![Spreadsheet](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/spreadsheet.png)
 
 ## Features
@@ -48,7 +54,7 @@ Please notice that after the program returns information to the user it also ena
 
 - user_choice function prints the main menu to the terminal where the user can input one of the options to trigger the other functions and return data to the terminal. It also gives the option to exit the program. Please notice that the letter X has been reserved for the exit function for better user experience.
 
-- tastes_available function creates a list from the values of the first column without the heading, which would be redundant in this case.
+- tastes_available function creates a list from the values of the first column without the heading, which would be redundant in this case. It returns all the tastes available in the spreadsheet, so if the user wants to know more about a specific taste, they already know the options available.
 
 - taste_choice and inner_menu provide the user the possibility to input a value to move forward or exit. They both return an error message if the imput is invalid.
 
