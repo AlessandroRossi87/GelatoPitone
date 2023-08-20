@@ -1,6 +1,10 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
+"""
+Connects to the Google spreadsheet using API
+"""
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -13,7 +17,9 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("icecream_sheet")
 
 icecreams = SHEET.worksheet("icecreams").get_all_values()
-
+"""
+Creates a variable for each column in the spreadsheet
+"""
 taste = SHEET.worksheet("icecreams").col_values(1)    # col_values start with 1 not 0
 ingredients = SHEET.worksheet("icecreams").col_values(2)
 vegan = SHEET.worksheet("icecreams").col_values(3)
@@ -28,7 +34,7 @@ supplier = SHEET.worksheet("icecreams").col_values(10)
 
 class IceCream:
     """
-    Class for icecream from the worksheet
+    Class for icecream from the spreadsheet
     """
     global icecreams
 
@@ -82,7 +88,7 @@ def tastes_available():
 def taste_choice():
     """
     Makes the user decide if they want more info
-    about tastes or if they wish to go back to 
+    about tastes or if they wish to go back to
     menu
     """
     info_or_menu = input("Type I for info about tastes or M for Menu: \n")
@@ -147,7 +153,7 @@ def low_fat():
     for icecream in sorted_fat[:3]:
         print(icecream[0])
         
-    inner_menu()
+inner_menu()
 
 
 def high_prot():
@@ -192,7 +198,7 @@ def low_calories():  # WORKS
     inner_menu()
 
 
-def icecream_nuts():    #WORKS
+def icecream_nuts():
     """
     Gives the user with a list
     of tastes containing nuts or
@@ -226,7 +232,7 @@ def icecream_nuts():    #WORKS
     inner_menu()
 
 
-def vegan_icecream():  #WORKS
+def vegan_icecream():  # WORKS
     """
     Provides the user with list
     of vegan tastes
@@ -309,4 +315,4 @@ def user_choice():   # I wrote this WORKS
         user_choice()
 
 
-user_choice()    # This function starts the user iteraction 
+user_choice()
