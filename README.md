@@ -2,7 +2,7 @@
 
 I took inspiration from the Love Sandwiches walkthrough project to create something similar but in a different setting. I decided to create a program with Python for a small ice cream truck company called "Gelato Pitone" where the different icetrucks can check the ice cream tastes available in the centralized database and receive information about the different choices available. I have created a Google spreadsheet with all the information about the different tastes.
 
-Here is the link to the deployed Python terminal on [Heroku](xxxxxx) 
+Here is the link to the deployed Python terminal on [Heroku](https://gelato-pitone-8a25ccdd7e11.herokuapp.com/) 
 
 ## Design process
 
@@ -10,37 +10,37 @@ Originally I had imagined how the different ice cream trucks could either read o
 
 Here is a flowchart representing the original idea for my project:
 
-![LucidApp](XXXXXXX)
+![LucidApp](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/flowchart.png)
 
 Nevertheless after speaking with Luke Buchanan I realized that my project would be too similar to the walkthrough project so I decided to have a more complex datasheet where each ice cream taste would have different types of data attached to it, both integers and text.
 
-![Spreadsheet](XXXXXX)
+![Spreadsheet](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/spreadsheet.png)
 
 ## Features
 
 At the beginning of the program the user is greeted by the main menu. It features the name of the ice cream truck company and it is decorated in ASCII language. I created a simple ASCII box with ChatGPT and was then able to modify it and enhance it according to my needs.
 
-![Picture1](XXXXXX)
+![Picture1](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/1mainmenu.png)
 
 The user has then the possibility of seeing which tastes are available and then chose if they want to have more information about a specific taste or go back to the main menu:
 
-![Picture2](XXXXXXX)
+![Picture2](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/2tastes.png)
 
 Every input function in the program returns an error message if the input value is not valid. Here is the error message for inserting an ice cream taste not available in the list:
 
-![Picture3](XXXXXX)
+![Picture3](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/3error.png)
 
 For each ice cream taste available the program gives the user the possibility to retreive all information present in the spreadsheet for each specific taste, containing relevant information about its ingredients, its price and the name of the supplier:
 
-![Picture4](XXXXXX)
+![Picture4](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/4tasteinfo.png)
 
 The program gives different lists showing three ice cream tastes according to different statistics, so that the user can always know which ice cream they can offer their customers according to their dietary needs. Here for example the program returns the three tastes with lowest amount of calories:
 
-![Picture5](XXXXX)
+![Picture5](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/5selection.png)
 
 Please notice that after the program returns information to the user it also enables the user to go back to the main menu or exiting the program.
 
-![Picture6](XXXX)
+![Picture6](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/6exit.png)
 
 ### Functions
 
@@ -54,12 +54,50 @@ Please notice that after the program returns information to the user it also ena
 
 - read_data is called after the tastes_available function as it gives the user the possibility to input and therefore select an ice cream taste from that list. If the ice cream taste is present in the file it returns an instance of the IceCream class and returns the show_data method to the terminal. If the ice cream taste input is invalid the program will return an error message and restart the function, so that the user can input a valid value.
 
-- low_fat, high_prot, low_carbs and low_calories use the sorted() function to 
+- low_fat, high_prot, low_carbs and low_calories use the sorted() function using lambda as a key to sort the values in ascending order and creates a float with the values from the respective column in the worksheet. The functions then print the three values relevant to the paramenters the user has requested (lowest or highest). 
+
+- icecream_nuts and vegan_icecream functions create a list comprehension which checks if the value of their respective column in the spreadsheet is either "nuts" or "yes" respectively. The if statements then return to the user a list of tastes in accordance to the parameters in the list comprehension when the condition is met.
+
+- exit_pitone asks the user if they are sure to exit the program. The function provides two options for input, one to exit and one to go back to the main menu. The function returns an error message if the input is invalid.
 
 ### Discarted Functions
 
+- During the coding process for this project I wanted to create a function which would calculate the revenue for each ice cream. That would have been possible if I created two lists where the program would subtract price from the retail price and give the revenue. It then would have returned to the terminal the three ice cream tastes with highest revenue. After many failed attempts to construct this function I had to discart this idea for time constrigement issues. I would love to work further in that to learn more about the possibilities that Python gives.
+
 ## Testing
+
+### PEP8 Validator Testing
+
+- The PEP 8 validator testing showed only warning messages that some of the code lines are longer than 80 characters. Since none of the print statements are longer than 80 characters I ignored these warnings as they were irrelevant for the functionality of the deployed version.
+
+![Validator](XXXXXXXXX)
+
+### Fixed Bugs
+
+- One error it took me quite some time to figure out was that .col_values method uses a 1 based index instead of 0. Once I was reminded of that I was able to make my model work perfectly.
+
+![col_values](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/colvalues.png)
+
+## Deployment
+
+- First I created a list of dependencies for deployment in Heroku by updating the requirements.txt file with the command: Pip3 freeze > requirements.txt
+- After creating my Heroku account and getting the Student Pack I was able to create a new app there to deploy my project.
+- In the new app on Heroku I added environment variables for Heroku to access the creds.json file and PORT.
+- I then added the Python and node.js buildpacks and added them to the app.
+- I selected the manual deployment method and linked my Heroku app to the GitHub repository.
+- After the deployment was successfully concluded I was able to get the link to the deployed website.
 
 ## Credits
 
-## Deployment
+- I have been following the Love Sandwiches walkthrough project as a reference to how structure my program. Specifically the connection with Google API was done following the walkthrough project.
+- The dataset was created on [ChatGPT](https://chat.openai.com/auth/login) by requesting 15 ice cream tastes for the headings I provided. I consequently modified the dataset to better fit the purposes of this project as I was moving along.
+- The main menu graphics in ASCII was also created partly with [ChatGPT](https://chat.openai.com/auth/login) and then modified by me.
+- The code for the read function was created from [docs.gspread.org](https://docs.gspread.org/en/latest/user-guide.html#getting-all-values-from-a-row-or-a-column)
+- The code for the sorted() functions and key=lambda was created from [StackOverflow](https://stackoverflow.com/questions/8966538/syntax-behind-sortedkey-lambda)
+- The code for the list comprehension with an if statement was created from [StackOverflow](https://stackoverflow.com/questions/4260280/if-else-in-a-list-comprehension)
+- The exit() function was created from [FreeCodeCamp](https://www.freecodecamp.org/news/python-exit-how-to-use-an-exit-function-in-python-to-stop-a-program/)
+- The class IceCream and its model were created from [W3](https://www.w3schools.com/python/python_classes.asp)
+- The flowchart was created in [LucidArt](https://www.lucidart.com/)
+
+## Acknowledgements
+I would like to thank my friends who supported me during this whole process while also giving a special thanks to David Calikes for his support and my mentor Luke Buchanan who provided me with guidance and has enhanced my learning experience.
