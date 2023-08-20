@@ -26,7 +26,7 @@ calories = SHEET.worksheet("icecreams").col_values(9)
 supplier = SHEET.worksheet("icecreams").col_values(10)
 
 
-class IceCream:  # DOES IT WORK?
+class IceCream:
     """
     Class for icecream from the worksheet
     """
@@ -65,7 +65,7 @@ class IceCream:  # DOES IT WORK?
         taste_choice()
 
 
-def tastes_available():  # WORKS
+def tastes_available():
     """
     Displays the tastes available and gives choice
     to get more info about specific taste
@@ -79,7 +79,7 @@ def tastes_available():  # WORKS
     taste_choice()
 
 
-def taste_choice():   # WORKS
+def taste_choice():
     """
     Makes the user decide if they want more info
     about tastes or if they wish to go back to 
@@ -98,7 +98,7 @@ def taste_choice():   # WORKS
         taste_choice()
 
 
-def read_data():  # WORKS
+def read_data():
     """
     Gives the user all the info available
     about a specific icecream taste
@@ -109,14 +109,14 @@ def read_data():  # WORKS
         my_icecream = IceCream(icecream_taste)
         my_icecream.show_data()
     else:
-        print("xxxxxxxxxxxxxxxxxxxx")
+        print("xxxxxxxxxxxxxxxxxx")
         print("Icecream not found")
-        print("xxxxxxxxxxxxxxxxxxxx\n")
+        print("xxxxxxxxxxxxxxxxxx\n")
 
     read_data()
 
 
-def inner_menu():   # WORKS
+def inner_menu():
     """
     Gives user possibility to have more info
     about specific taste or go back to main menu
@@ -136,12 +136,12 @@ def inner_menu():   # WORKS
         inner_menu()
 
 
-def low_fat():  # WORKS
+def low_fat():
     """
     Gives the user the 3 ice cream tastes
     with the least amount of fat
     """
-    sorted_fat = sorted(icecreams[1:], key=lambda x: float(x[5]) if x[5] else 0.0)
+    sorted_fat = sorted(icecreams[1:], key=lambda x: float(x[5]) if x[5] else 0)
 
     print("Icecream tastes with lowest fat are: \n")
     for icecream in sorted_fat[:3]:
@@ -150,12 +150,12 @@ def low_fat():  # WORKS
     inner_menu()
 
 
-def high_prot():   # WORKS
+def high_prot():
     """
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
     """
-    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0, reverse=True)    # Reverse in order to show highest values
+    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0, reverse=True)    # Reverse in order to show highest values
 
     print("Icecream tastes with highest proteins are:\n")
     for icecream in sorted_prot[:3]:
@@ -169,7 +169,7 @@ def low_carbs():   # WORKS
     Gives the user the 3 ice cream tastes
     with the least amount of carbs
     """
-    sorted_carb = sorted(icecreams[1:], key=lambda x: float(x[6]) if x[6] else 0.0)
+    sorted_carb = sorted(icecreams[1:], key=lambda x: float(x[6]) if x[6] else 0)
 
     print("Icecream tastes with lowest carbs are: \n")
     for icecream in sorted_carb[:3]:
@@ -183,7 +183,7 @@ def low_calories():  # WORKS
     Gives the user the 3 ice cream tastes
     with the least amout of calories
     """
-    sorted_calories = sorted(icecreams[1:], key=lambda x: float(x[8]) if x[8] else 0.0)
+    sorted_calories = sorted(icecreams[1:], key=lambda x: float(x[8]) if x[8] else 0)
 
     print("Icecream tastes with lowest calories are: \n")
     for icecream in sorted_calories[:3]:
@@ -303,9 +303,9 @@ def user_choice():   # I wrote this WORKS
     elif select_menu == "x":
         exit_pitone()
     else:
-        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-        print("Error message! Chose A, B, C, D, E or F")
-        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        print("Error message! Chose A, B, C, D, E, F, G or X")
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
         user_choice()
 
 
