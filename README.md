@@ -1,12 +1,12 @@
 # Gelato Pitone
 
-I took inspiration from the Love Sandwiches walkthrough project to create something similar but in a different setting. I decided to create a program with Python for a small ice cream truck company called "Gelato Pitone" where the different icetrucks can check the ice cream tastes available in the centralized database and receive information about the different choices available. I have created a Google spreadsheet with all the information about the different tastes.
+I took inspiration from the Love Sandwiches walkthrough project to create something similar but in a different setting. I found the connection to the spreadsheet fascinating, as I have extensive experience with big data sets. I decided to create a program with Python for a small fictive ice cream truck company called "Gelato Pitone" where the different icetrucks can check the ice cream tastes available in the central warehouse and receive information about the different choice of tastes available. I have created a Google spreadsheet with all the information about the different tastes.
 
 Here is the link to the deployed Python terminal on [Heroku](https://gelato-pitone-8a25ccdd7e11.herokuapp.com/) 
 
 ## Design process
 
-Originally I had imagined how the different ice cream trucks could either read or insert data into the Google spreadsheet. The individual users would have been able to input how many liters of the different ice creams they have sold under one day and enable the spreadsheet to update showing how much ice cream was left in stock and return the profit for the user.
+Originally I had imagined how the different users could either read or insert data into the Google spreadsheet. The users would have been able to input how many liters of the different ice creams they have sold under one day and enable the spreadsheet to update showing how much ice cream was left in stock and return the profit for the user.
 
 Here is a flowchart representing the original idea for my project:
 
@@ -54,7 +54,7 @@ Please notice that after the program returns information to the user it also ena
 
 - read_data is called after the tastes_available function as it gives the user the possibility to input and therefore select an ice cream taste from that list. If the ice cream taste is present in the file it returns an instance of the IceCream class and returns the show_data method to the terminal. If the ice cream taste input is invalid the program will return an error message and restart the function, so that the user can input a valid value.
 
-- low_fat, high_prot, low_carbs and low_calories use the sorted() function using lambda as a key to sort the values in ascending order and creates a float with the values from the respective column in the worksheet. The functions then print the three values relevant to the paramenters the user has requested (lowest or highest). 
+- low_fat, high_prot, low_carbs and low_calories use the sorted() function using lambda as a key to sort the values in ascending order and creates a float with the values from the respective column in the worksheet. The functions then print the three values relevant to the paramenters the user has requested (lowest or highest). The reverse=True argument was used for reversing the sorting order in the high_prot function.
 
 - icecream_nuts and vegan_icecream functions create a list comprehension which checks if the value of their respective column in the spreadsheet is either "nuts" or "yes" respectively. The if statements then return to the user a list of tastes in accordance to the parameters in the list comprehension when the condition is met.
 
@@ -74,7 +74,7 @@ Please notice that after the program returns information to the user it also ena
 
 ### Known Bugs
 
-At the moment of deployment there were no know bugs. The deployed website was tested on Google Chrome and Safari.
+At the moment of deployment there were no known bugs. The deployed website was tested on Google Chrome and Safari.
 
 ### Fixed Bugs
 
