@@ -48,7 +48,7 @@ class IceCream:  # DOES IT WORK?
 
     def show_data(self):
         """"
-        Gives the user all data about a specific ste
+        Gives the user all information about a specific taste
         """
         print("*******************************\n")
         print(f"You selected <<{self.taste}>>\n")
@@ -68,7 +68,7 @@ class IceCream:  # DOES IT WORK?
 def tastes_available():  # WORKS
     """
     Displays the tastes available and gives choice
-    to get more info for specific taste
+    to get more info about specific taste
     """
     print("The tastes available are: \n")
     icecream_taste = [item for item in SHEET.worksheet("icecreams").col_values(1) if item]

@@ -1,32 +1,31 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Gelato Pitone
 
-Welcome,
+I took inspiration from the Love Sandwiches walkthrough project to create something similar but in a different setting. I decided to create a program with Python for a small ice cream truck company called "Gelato Pitone" where the different icetrucks can check the ice cream tastes available in the centralized database and receive information about the different choices available. I have created a Google spreadsheet with all the information about the different tastes.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+Here is the link to the deployed Python terminal on [Heroku](xxxxxx) 
 
-## Reminders
+## Design process
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+Originally I had imagined how the different ice cream trucks could either read or insert data into the Google spreadsheet. The individual users would have been able to input how many liters of the different ice creams they have sold under one day and enable the spreadsheet to update showing how much ice cream was left in stock and return the profit for the user.
 
-## Creating the Heroku app
+Here is a flowchart representing the original idea for my project:
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+![LucidApp](XXXXXXX)
 
-1. `heroku/python`
-2. `heroku/nodejs`
+Nevertheless after speaking with Luke Buchanan I realized that my project would be too similar to the walkthrough project so I decided to have a more complex datasheet where each ice cream taste would have different types of data attached to it, both integers and text.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Features
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Functions
 
-Connect your GitHub repository and deploy as normal.
+### Discarted Functions
 
-## Constraints
+## Testing
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+### Validator Testing
 
----
+### Accessibility Testing
 
-Happy coding!
+## Credits
+
+## Deployment
