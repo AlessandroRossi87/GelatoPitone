@@ -14,7 +14,7 @@ SHEET = GSPREAD_CLIENT.open("icecream_sheet")
 
 icecreams = SHEET.worksheet("icecreams").get_all_values()
 
-taste = SHEET.worksheet("icecreams").col_values(1) # col_values start with 1 not 0
+taste = SHEET.worksheet("icecreams").col_values(1)    # col_values start with 1 not 0
 ingredients = SHEET.worksheet("icecreams").col_values(2)
 vegan = SHEET.worksheet("icecreams").col_values(3)
 price = SHEET.worksheet("icecreams").col_values(4)
@@ -46,7 +46,7 @@ class IceCream:  # DOES IT WORK?
                 self.calories = icecream[8]
                 self.supplier = icecream[9]
 
-    def show_data(self):  
+    def show_data(self):
         """"
         Gives the user all data about a specific ste
         """
@@ -75,9 +75,9 @@ def tastes_available():  # WORKS
     icecream_taste.pop(0)  # takes away header from list
     for item in icecream_taste:
         print(item)
-    
+
     taste_choice()
-        
+
 
 def taste_choice():   # WORKS
     """
@@ -86,7 +86,7 @@ def taste_choice():   # WORKS
     menu
     """
     info_or_menu = input("Type I for info about tastes or M for Menu: \n")
-    info_or_menu = info_or_menu.lower()   
+    info_or_menu = info_or_menu.lower()
     if info_or_menu == "i":
         read_data()
     elif info_or_menu == "m":
@@ -100,7 +100,7 @@ def taste_choice():   # WORKS
 
 def read_data():  # WORKS
     """
-    Gives the user all the info availabl
+    Gives the user all the info available
     about a specific icecream taste
     """
     icecream_taste = input("Please enter icecream taste: \n")
@@ -112,7 +112,7 @@ def read_data():  # WORKS
         print("xxxxxxxxxxxxxxxxxxxx")
         print("Icecream not found")
         print("xxxxxxxxxxxxxxxxxxxx\n")
-    
+
     read_data()
 
 
@@ -155,7 +155,7 @@ def high_prot():   # WORKS
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
     """
-    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0, reverse=True)  #Reverse in order to show highest values
+    sorted_prot = sorted(icecreams[1:], key=lambda x: float(x[7]) if x[7] else 0.0, reverse=True)    # Reverse in order to show highest values
 
     print("Icecream tastes with highest proteins are:\n")
     for icecream in sorted_prot[:3]:
@@ -189,13 +189,14 @@ def low_calories():  # WORKS
     for icecream in sorted_calories[:3]:
         print(icecream[0])
 
-    inner_menu()  
+    inner_menu()
 
 
-def icecream_nuts():    #  WORKS
+def icecream_nuts():    #WORKS
     """
-    Gives the user the 3 ice cream tastes
-    that are most profitable
+    Gives the user with a list
+    of tastes containing nuts or
+    without nuts
     """
     nuts_or_not = input("Press N for list with nuts or W for without nuts \n")
     nuts_or_not = nuts_or_not.lower()
@@ -206,7 +207,7 @@ def icecream_nuts():    #  WORKS
             for icecream in contains_nuts:
                 print(icecream)
         else:
-            print("No tastes contain nuts")
+            print("No taste contain nuts")
 
     elif nuts_or_not == "w":
         without_nuts = [icecream[0] for icecream in icecreams[1:] if icecream[1].lower() != "nuts"]
@@ -233,9 +234,11 @@ def vegan_icecream():  #WORKS
     vegan_tastes = [icecream[0] for icecream in icecreams[1:] if icecream[2].lower() == "yes"]
 
     if vegan_tastes:
-        print("The vegan tasteas are:")
+        print("The vegan tastes are:")
         for icecream in vegan_tastes:
             print(icecream)
+    else:
+        print("No vegan tastes available")
 
     inner_menu()
 
@@ -260,8 +263,8 @@ def exit_pitone():   # WORKS
 
 def user_choice():   # I wrote this WORKS
     """
-    Asks user if they wish to read or insert data.
-    They can insert sold data or read any data.
+    This is the main menu, it gives the user
+    the possibility to read different lists
     """
     print("╔════════════════════════════╗")
     print("║   G E L A T O              ║")
@@ -306,4 +309,4 @@ def user_choice():   # I wrote this WORKS
         user_choice()
 
 
-user_choice() # This function starts the user iteraction
+user_choice()    # This function starts the user iteraction 
