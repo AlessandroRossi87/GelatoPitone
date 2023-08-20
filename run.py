@@ -150,7 +150,7 @@ def low_fat():  # WORKS
     inner_menu()
 
 
-def high_prot(): # WORKS
+def high_prot():   # WORKS
     """
     Gives the user the 3 ice cream tastes
     with the highest amout of protein
@@ -192,17 +192,35 @@ def low_calories():  # WORKS
     inner_menu()  
 
 
-### def most_profit():   # DOES NOT WORK
+def icecream_nuts():    #  WORKS
     """
     Gives the user the 3 ice cream tastes
     that are most profitable
     """
-    icecream_profit = retail_price - price
-    sorted_profit = sorted(icecream_profit[1:])
+    nuts_or_not = input("Press N for list with nuts or W for without nuts \n")
+    nuts_or_not = nuts_or_not.lower()
+    if nuts_or_not == "n":
+        contains_nuts = [icecream[0] for icecream in icecreams[1:] if icecream[1].lower() == "nuts"]
+        if contains_nuts:
+            print("The following tastes contain nuts:")
+            for icecream in contains_nuts:
+                print(icecream)
+        else:
+            print("No tastes contain nuts")
 
-    print("Icecream tastes with highest profit are: \n")
-    for icecream in sorted_profit[:3]:
-        print(icecream_profit[0])
+    elif nuts_or_not == "w":
+        without_nuts = [icecream[0] for icecream in icecreams[1:] if icecream[1].lower() != "nuts"]
+        if without_nuts:
+            print("The following tastes do not contain nuts:")
+            for icecream in without_nuts:
+                print(icecream)
+        else:
+            print("All tastes contain nuts")
+    else:
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        print("Error message! Choose N or W")
+        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n")
+        icecream_nuts()
 
     inner_menu()
 
@@ -258,9 +276,9 @@ def user_choice():   # I wrote this WORKS
     print("║    C: High protein         ║")
     print("║    D: Low carbs            ║")
     print("║    E: Low calories         ║")
-    print("║    F: XXXXXXX              ║")
+    print("║    F: Contain nuts         ║")
     print("║    G: Vegan options        ║")
-    print("║    X: Exit                 ║")
+    print("║    X: -> Exit ->           ║")
     print("║                            ║")
     print("╚════════════════════════════╝")
     select_menu = input(" \n")
@@ -276,7 +294,7 @@ def user_choice():   # I wrote this WORKS
     elif select_menu == "e":
         low_calories()
     elif select_menu == "f":
-        XXXX
+        icecream_nuts()
     elif select_menu == "g":
         vegan_icecream()
     elif select_menu == "x":
