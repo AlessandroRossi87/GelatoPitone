@@ -110,10 +110,10 @@ def read_data():
     about a specific icecream taste
     """
     icecream_taste = input("Please enter icecream taste: \n")
+    icecream_taste = icecream_taste.lower()
 
     if (icecream_taste in SHEET.worksheet("icecreams").col_values(1)):
         my_icecream = IceCream(icecream_taste)
-        my_icecream = my_icecream.lower()
         my_icecream.show_data()
     else:
         print("xxxxxxxxxxxxxxxxxx")
@@ -130,6 +130,7 @@ def inner_menu():
     """
     info_or_menu = input("Type T for tastes, M for menu or X for Exit: \n")
     info_or_menu = info_or_menu.lower()
+
     if info_or_menu == "t":
         read_data()
     elif info_or_menu == "m":
@@ -207,6 +208,7 @@ def icecream_nuts():
     """
     nuts_or_not = input("Press N for list with nuts or W for without nuts \n")
     nuts_or_not = nuts_or_not.lower()
+
     if nuts_or_not == "n":
         contains_nuts = [icecream[0] for icecream in icecreams[1:] if icecream[1].lower() == "nuts"]
         if contains_nuts:
@@ -257,6 +259,7 @@ def exit_pitone():
     """
     exit_or_menu = input("Do you wish to exit? Y or N: \n")
     exit_or_menu = exit_or_menu.lower()
+    
     if exit_or_menu == "y":
         exit()
     elif exit_or_menu == "n":

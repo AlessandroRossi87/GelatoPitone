@@ -80,6 +80,8 @@ Please notice that after the program returns information to the user it also ena
 
 ### Manual Testing
 
+- All functions have been tested manually and have given the expected results.
+
 ### Known Bugs
 
 At the moment of deployment there were no known bugs. The deployed website was tested on Google Chrome and Safari.
