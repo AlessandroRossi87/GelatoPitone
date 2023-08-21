@@ -34,7 +34,7 @@ supplier = SHEET.worksheet("icecreams").col_values(10)
 
 class IceCream:
     """
-    Class for icecream from the spreadsheet
+    Model for icecream from the spreadsheet
     """
     global icecreams
 
@@ -149,12 +149,12 @@ def low_fat():
     with the least amount of fat
     """
     sorted_fat = sorted(icecreams[1:], key=lambda x: float(x[5]) if x[5] else 0)
-
+    
     print("Icecream tastes with lowest fat are: \n")
     for icecream in sorted_fat[:3]:
         print(icecream[0])
-        
-inner_menu()
+
+    inner_menu()
 
 
 def high_prot():
@@ -171,7 +171,7 @@ def high_prot():
     inner_menu()
 
 
-def low_carbs():   # WORKS
+def low_carbs():
     """
     Gives the user the 3 ice cream tastes
     with the least amount of carbs
@@ -185,7 +185,7 @@ def low_carbs():   # WORKS
     inner_menu()
 
 
-def low_calories():  # WORKS
+def low_calories():
     """
     Gives the user the 3 ice cream tastes
     with the least amout of calories
@@ -233,7 +233,7 @@ def icecream_nuts():
     inner_menu()
 
 
-def vegan_icecream():  # WORKS
+def vegan_icecream():
     """
     Provides the user with list
     of vegan tastes
@@ -250,7 +250,7 @@ def vegan_icecream():  # WORKS
     inner_menu()
 
 
-def exit_pitone():   # WORKS
+def exit_pitone():
     """
     Gives the user the option to exit program or
     start again with main menu
@@ -268,7 +268,7 @@ def exit_pitone():   # WORKS
         exit_pitone()
 
 
-def user_choice():   # I wrote this WORKS
+def user_choice():
     """
     This is the main menu, it gives the user
     the possibility to read different lists

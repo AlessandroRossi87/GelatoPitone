@@ -12,13 +12,15 @@ Here is a flowchart representing the original idea for my project:
 
 ![LucidApp](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/flowchart.png)
 
-Nevertheless after speaking with Luke Buchanan I realized that my project would be too similar to the walkthrough project so I decided to have a more complex datasheet where each ice cream taste would have different types of data attached to it, both integers and text.
+Nevertheless after speaking with my mentor Luke Buchanan I realized that my project would be too similar to the walkthrough project so I decided to have a more complex datasheet where each ice cream taste would have different types of data attached to it, both integers and text.
 
 Here is a simplified flowchart representing how the project evolved:
 
 ![LucidApp](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/newflowchart.png)
 
 ## The data set from the spreadsheet
+
+I decided to use the Google sheets API library as it enables me to build a connection with my data.
 
 ![Spreadsheet](https://github.com/AlessandroRossi87/GelatoPitone/blob/main/assets/spreadsheet.png)
 
@@ -66,7 +68,7 @@ Please notice that after the program returns information to the user it also ena
 
 - exit_pitone asks the user if they are sure to exit the program. The function provides two options for input, one to exit and one to go back to the main menu. The function returns an error message if the input is invalid.
 
-### Discarted Functions
+### Discarded Functions
 
 - During the coding process for this project I wanted to create a function which would calculate the revenue for each ice cream. That would have been possible if I created two lists where the program would subtract price from the retail price and give the revenue. It then would have returned to the terminal the three ice cream tastes with highest revenue. After many failed attempts to construct this function I had to discart this idea for time constrigement issues. I would love to work further in that to learn more about the possibilities that Python gives.
 
@@ -76,7 +78,7 @@ Please notice that after the program returns information to the user it also ena
 
 - The PEP 8 validator testing showed only warning messages that some of the code lines are longer than 80 characters. Since none of the print statements are longer than 80 characters I ignored these warnings as they were irrelevant for the functionality of the deployed version.
 
-![Validator](XXXXXXXXX)
+### Manual Testing
 
 ### Known Bugs
 
