@@ -113,6 +113,7 @@ def read_data():
 
     if (icecream_taste in SHEET.worksheet("icecreams").col_values(1)):
         my_icecream = IceCream(icecream_taste)
+        my_icecream = my_icecream.lower()
         my_icecream.show_data()
     else:
         print("xxxxxxxxxxxxxxxxxx")
